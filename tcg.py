@@ -38,7 +38,7 @@ for c in cards:
     if (c.image_url_hi_res is not None):
         f.write(',"image_url_hi_res":"' + c.image_url_hi_res.replace('"', '') + '"')
     
-    if (c.subtype is None):
+    if (c.subtype is not None):
         f.write(',"subtype":"' + c.subtype.replace('"', '') + '"')
     
     if (c.supertype is not None):
