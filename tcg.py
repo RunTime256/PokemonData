@@ -16,6 +16,7 @@ supertypes = Supertype.all()
 
 print('Resources gathered, converting to json...')
 
+#Loops through all cards an eliminates all NoneTypes to eliminate excess null values in json
 cards_list = []
 for c in cards:
     card_dict = {}
@@ -99,10 +100,10 @@ for c in cards:
 
     cards_list.append(card_dict)
 
-with open('../IdeaProjects/PrivateResources/cards.json', 'w') as f:
+with open('../IdeaProjects/PrivateResources/tcg/cards.json', 'w') as f:
     json.dump({'cards': cards_list}, f)
 
-
+#Stores all the sets into a list
 sets_list = [{
         'code': s.code,
         'name': s.name,
@@ -113,5 +114,15 @@ sets_list = [{
         'release_date': s.release_date
     } for s in sets]
 
-with open('../IdeaProjects/PrivateResources/sets.json', 'w') as f:
+with open('../IdeaProjects/PrivateResources/tcg/sets.json', 'w') as f:
     json.dump({'sets': sets_list}, f)
+
+#Adds the additional types, supertypes, and subtypes to a file for easy referencing/searching
+with open('../IdeaProjects/PrivateResources/tcg/types.json', 'w') as f:
+    json.dump({'types': types}, f)
+    
+with open('../IdeaProjects/PrivateResources/tcg/supertypes.json', 'w') as f:
+    json.dump({'supertypes': supertypes}, f)
+    
+with open('../IdeaProjects/PrivateResources/tcg/subtypes.json', 'w') as f:
+    json.dump({'subtypes': subtypes}, f)
